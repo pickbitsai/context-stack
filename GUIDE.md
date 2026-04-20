@@ -1,22 +1,14 @@
-# The Context Stack — Field Guide
+# Context Stack — Field Guide
 
-**Level 1 of 7. Turn your project knowledge into AI working memory — so you stop re-explaining yourself every Monday.**
-
----
-
-**Who this is for:** Knowledge workers, founders, engineers, and ops people who use AI (Claude, ChatGPT, Gemini, Cursor) and keep hitting the same wall — you spend ten minutes loading context before every session, forget what you decided last week, and lose threads across tools.
-
-**What it is:** A five-layer system for structuring project knowledge so AI can load it in under 60 seconds — without you copy-pasting anything.
+Level 1 of 7. How I organize AI context across a dozen projects so it wakes up already knowing what I'm working on.
 
 ---
 
-## The problem
+Most people use AI like a better Google — fire a question, get an answer, walk away. Useful, but flat.
 
-You open Claude. You paste the project brief again. You explain where you left off again. You describe the stakeholders again. Fifteen minutes in, you're finally ready to work. By next Monday, the context is gone. You start over.
+A small number use it differently. Their AI wakes up already knowing what they're working on, what was decided last week, what's blocked. It drafts with their context. It catches things they forgot. They stop asking questions and start shipping with it.
 
-Your AI has no memory of you. It's been reset since yesterday. And the way most people deal with this — longer prompts, bigger system messages, more tabs — is a treadmill.
-
-**The Context Stack fixes it with structure.**
+This guide is the shortest path I've found — three files, a 60-second load, a 10-minute weekly reset. Not a methodology. Just what I do every Monday so AI feels like a co-builder instead of a chatbot.
 
 ---
 
@@ -109,10 +101,21 @@ This is the manual version — the starting point. The series builds out from he
 
 ---
 
-## Get started in 60 seconds
+## Get started — pick your surface
 
-You already have the repo. The fastest path to your first Context Stack:
+Same three-file pattern. Pick the path that matches how you already work.
 
+### Claude Desktop + Cowork *(non-dev · canonical path)*
+You don't need this repo for this path. You need **Claude Desktop** (paid plan) and a local folder for your project.
+
+1. Open Claude Desktop → **Cowork** tab
+2. New **Project** → **connect your local folder** (e.g. `~/Desktop/my-project/`)
+3. Ask: *"Read this folder. Draft my identity, project, and state files into it."*
+4. Cowork writes the three `.md` files directly into your folder — no uploads, no downloads.
+
+Cowork Projects persist context across sessions. Update `state.md` weekly; the next session picks up automatically.
+
+### Claude Code *(CLI · for developers)*
 ```bash
 cd context-stack
 # Open in Claude Code. Then in your session:
@@ -121,7 +124,14 @@ build my context stack
 
 The `context-stack-builder` skill scans your folder, asks a few questions, and writes a starter stack into `./context-stack/`. Read the debrief — it tells you what got populated, what it guessed, and what to add next.
 
-Don't have a project folder to try it on yet? Point it at an existing repo you're working in. It's designed to be safe: reads only from CWD, writes only to `./context-stack/`, never touches secrets. [Full safety contract here.](./.claude/skills/context-stack-builder/SKILL.md#0-safety-contract-non-negotiable)
+### VS Code with the Claude Code extension
+Same skill, same prompt, inside your editor. Install the Claude Code extension, open the repo, say *"build my context stack."*
+
+### No paid Claude plan?
+Copy the [templates](./templates/) by hand — first pass is ~15 minutes. Load them into any Claude session at session start. Same pattern, slightly more manual.
+
+### Safety (for the skill paths)
+Reads only from CWD, writes only to `./context-stack/`, never touches secrets. [Full contract.](./.claude/skills/context-stack-builder/SKILL.md#0-safety-contract-non-negotiable)
 
 ---
 

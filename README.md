@@ -11,20 +11,28 @@ This repo ships the skills, templates, and connector configs that make the pract
 
 ---
 
-## Quickstart
+## Quickstart — pick your surface
 
+Same three-file pattern. Three ways to wire it up depending on how you already work.
+
+### Claude Desktop + Cowork *(non-dev · canonical path)*
+1. Open **Claude Desktop** → **Cowork** tab (requires a paid Claude plan).
+2. Create a new **Project** → **connect your local folder** (e.g. `~/Desktop/my-project/`).
+3. Ask: *"Read this folder. Draft my identity, project, and state files into it."*
+4. Cowork writes the three `.md` files directly into your folder — no uploads, no downloads.
+
+### Claude Code *(CLI · for developers)*
 ```bash
 gh repo clone pickbitsai/context-stack
 cd context-stack
 ```
+Open the folder in Claude Code. In your session, say *"build my context stack."* The `context-stack-builder` skill scans the folder, asks a handful of questions, and writes a starter stack into `./context-stack/`.
 
-Open the folder in Claude Code (or any editor with the Claude Code extension). In your session, say:
+### VS Code with the Claude Code extension *(same skill, inside the IDE)*
+Install the Claude Code extension in VS Code, open the repo, use the same prompt. Skill runs identically.
 
-```
-build my context stack
-```
-
-The `context-stack-builder` skill will scan your current project, ask a handful of questions, and write a starter Context Stack into `./context-stack/`. Read the debrief — it tells you what was populated, what it guessed, and what to add next.
+### Don't have a paid Claude plan?
+Open the [GUIDE.md](./GUIDE.md) and copy the three templates by hand. It's a 15-minute first pass. Every surface supports loading three markdown files at session start.
 
 ---
 
