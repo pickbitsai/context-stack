@@ -6,6 +6,9 @@ Turn your project knowledge into AI working memory — in under 60 seconds a day
 
 This repo ships the skills, templates, and connector configs that make the practice real. Start manual (Level 1), graduate to autopilot (Level 2), wire your systems of record (Levels 3–6).
 
+📖 **Read the Field Guide:** [GUIDE.md](./GUIDE.md) — the full one-page practice.
+🖨️ **Printable versions:** [dark HTML](./docs/field-guide-dark.html) · [light/print HTML](./docs/field-guide-print.html) — open in a browser, `Ctrl+P` → Save as PDF.
+
 ---
 
 ## Quickstart
@@ -37,13 +40,15 @@ Five layers of project knowledge that make AI useful on day 1 and every day afte
 | **4. Artifacts** | Code, docs, specs | Referenced (links), not copied. |
 | **5. Patterns** | Your prompt templates, rules, rubrics | Hand-authored. Reusable. |
 
-Full narrative: the PickBits Context Stack Field Guide — available at [pickbits.ai/bio](https://pickbits.ai/bio).
+Full narrative: [**GUIDE.md**](./GUIDE.md) — the one-page Field Guide for this practice.
 
 ---
 
 ## What's in this repo
 
 ```
+GUIDE.md                      The one-page Field Guide for the practice.
+docs/                         Printable versions (dark + print-friendly HTML).
 .claude/skills/
   context-stack-builder/      Level 1 — bootstrap your stack from an existing
                               project folder + attachments. (Episode 1.)
@@ -95,6 +100,7 @@ Bug reports, template improvements, new MCP configs — open an issue or PR. Kee
 
 ---
 
-**Field Guide + the full series:** [pickbits.ai/bio](https://pickbits.ai/bio)
+**Field Guide:** [GUIDE.md](./GUIDE.md) (in this repo)
 **Coaching (1:1):** [pickbits.ai/coaching](https://pickbits.ai/coaching)
 **Enterprise team training:** [pickbits.ai/consulting](https://pickbits.ai/consulting)
+**Follow the series:** [@pickbitsai](https://x.com/pickbitsai)

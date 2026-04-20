@@ -5,7 +5,7 @@ description: Bootstrap a PickBits Context Stack (identity + project + state) for
 
 # Context Stack Builder — Level 1
 
-Bootstraps three of the five Context Stack layers (Identity, Projects, State) from whatever the user already has in the current folder. The full practice is documented in the PickBits Field Guide at [pickbits.ai/bio](https://pickbits.ai/bio).
+Bootstraps three of the five Context Stack layers (Identity, Projects, State) from whatever the user already has in the current folder. The full practice is documented in [GUIDE.md](../../../GUIDE.md) in this repo.
 
 ## 0. Safety Contract (non-negotiable)
 
@@ -108,8 +108,9 @@ Return this exact shape:
 - **Daily load:** at session start, reference identity.md + the relevant project-*.md + state.md. Ask: "Load these. Tell me where I left off."
 - **Monday reset:** ~10 minutes updating each project file + archiving last week's state.md.
 
-**Full series + Field Guide:** pickbits.ai/bio
+**Field Guide:** GUIDE.md (in this repo)
 **Repo + future episodes:** github.com/pickbitsai/context-stack
+**Series updates:** @pickbitsai on Instagram · TikTok · YouTube · X
 ```
 
 ## 3. Principles
@@ -136,4 +137,5 @@ Return this exact shape:
 ---
 
 Skill source and related episodes: **github.com/pickbitsai/context-stack**
-Full Field Guide PDF and the series: **pickbits.ai/bio**
+Full Field Guide: **[GUIDE.md](../../../GUIDE.md)** (in this repo)
+Series updates: **@pickbitsai** across Instagram · TikTok · YouTube · X

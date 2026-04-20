@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Context Stack — Field Guide · PickBits.AI</title>
+  <meta name="description" content="A one-page field guide for turning your project knowledge into AI working memory — so you stop re-explaining yourself every Monday.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #00ffcc;
+      --secondary: #ff00ff;
+      --accent: #ff6b6b;
+      --bg: #050517;
+      --bg-2: #0a0a28;
+      --bg-3: #11112e;
+      --text: #e0e0e0;
+      --muted: #8a8aa0;
+      --border: rgba(0, 255, 204, 0.25);
+      --border-dim: rgba(0, 255, 204, 0.12);
+    }
+
+    @page {
+      size: A4;
+      margin: 8mm;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Rajdhani', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 10.5pt;
+      line-height: 1.35;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    body {
+      max-width: 210mm;
+      margin: 0 auto;
+      padding: 10mm 12mm;
+      background:
+        radial-gradient(ellipse at top right, rgba(255,0,255,0.05), transparent 50%),
+        radial-gradient(ellipse at bottom left, rgba(0,255,204,0.04), transparent 50%),
+        var(--bg);
+    }
+
+    .mono { font-family: 'Share Tech Mono', ui-monospace, monospace; }
+
+    /* Header */
+    .header {
+      border-bottom: 1px solid var(--primary);
+      padding-bottom: 6pt;
+      margin-bottom: 10pt;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 8.5pt;
+    }
+    .brand { color: var(--primary); letter-spacing: 2px; }
+    .brand .slash { color: var(--muted); margin: 0 4pt; }
+    .tagline { color: var(--muted); }
+    .tagline .cursor { color: var(--primary); animation: blink 1s infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    h1 {
+      font-size: 32pt;
+      font-weight: 700;
+      line-height: 0.95;
+      color: var(--text);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 4pt;
+    }
+    h1 .accent { color: var(--primary); }
+
+    .subtitle {
+      font-size: 11pt;
+      color: var(--muted);
+      font-family: 'Share Tech Mono', monospace;
+      margin-bottom: 10pt;
+      letter-spacing: 0.5px;
+    }
+
+    .intro {
+      background: var(--bg-2);
+      border-left: 3px solid var(--primary);
+      padding: 7pt 10pt;
+      margin-bottom: 12pt;
+      font-size: 10pt;
+    }
+    .intro strong { color: var(--primary); }
+    .intro .fix { color: var(--accent); }
+
+    .section-label {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 8pt;
+      color: var(--secondary);
+      letter-spacing: 2px;
+      margin-bottom: 5pt;
+      display: flex;
+      align-items: center;
+      gap: 6pt;
+    }
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border-dim);
+    }
+
+    .layers {
+      display: flex;
+      flex-direction: column;
+      gap: 4pt;
+      margin-bottom: 12pt;
+    }
+    .layer {
+      background: var(--bg-2);
+      border: 1px solid var(--border-dim);
+      border-left: 3px solid var(--primary);
+      padding: 6pt 10pt;
+      display: grid;
+      grid-template-columns: 24pt 110pt 1fr 95pt;
+      gap: 10pt;
+      align-items: center;
+    }
+    .layer-num {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 14pt;
+      color: var(--secondary);
+      font-weight: 700;
+    }
+    .layer-title .layer-name {
+      color: var(--primary);
+      font-size: 13pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      line-height: 1.1;
+    }
+    .layer-title .layer-kind {
+      color: var(--muted);
+      font-size: 8pt;
+      font-family: 'Share Tech Mono', monospace;
+      letter-spacing: 1px;
+    }
+    .layer-desc { font-size: 9.5pt; color: var(--text); }
+    .layer-file {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 8.5pt;
+      color: var(--accent);
+      background: rgba(255, 107, 107, 0.08);
+      border: 1px solid rgba(255, 107, 107, 0.25);
+      padding: 2pt 6pt;
+      text-align: center;
+      letter-spacing: 0.5px;
+    }
+
+    .drills {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8pt;
+      margin-bottom: 10pt;
+    }
+    .drill {
+      background: var(--bg-2);
+      border: 1px solid var(--border-dim);
+      padding: 7pt 10pt;
+    }
+    .drill-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      border-bottom: 1px dashed var(--border-dim);
+      padding-bottom: 3pt;
+      margin-bottom: 4pt;
+    }
+    .drill-head h3 {
+      color: var(--primary);
+      font-size: 11pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+    .drill-head .time {
+      color: var(--accent);
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 9pt;
+    }
+    .drill ol { margin-left: 14pt; font-size: 9.5pt; }
+    .drill ol li { margin-bottom: 2pt; padding-left: 2pt; }
+    .drill ol li::marker {
+      color: var(--secondary);
+      font-family: 'Share Tech Mono', monospace;
+      font-weight: 700;
+    }
+
+    .math {
+      background: linear-gradient(90deg, rgba(0,255,204,0.10), rgba(255,0,255,0.08));
+      border: 1px solid var(--primary);
+      padding: 8pt 12pt;
+      margin-bottom: 12pt;
+      font-size: 10pt;
+      display: flex;
+      gap: 12pt;
+      align-items: center;
+    }
+    .math .tag {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 9pt;
+      color: var(--secondary);
+      letter-spacing: 1px;
+      white-space: nowrap;
+    }
+    .math strong { color: var(--primary); }
+    .math .win { color: var(--accent); font-weight: 700; }
+
+    .cta {
+      border-top: 1px solid var(--primary);
+      padding-top: 8pt;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 6pt;
+      margin-bottom: 6pt;
+    }
+    .cta-card {
+      background: var(--bg-2);
+      border: 1px solid var(--border-dim);
+      padding: 7pt 9pt;
+      display: flex;
+      flex-direction: column;
+      gap: 2pt;
+    }
+    .cta-card .label {
+      color: var(--secondary);
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 7.5pt;
+      letter-spacing: 2px;
+    }
+    .cta-card .what {
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 11pt;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .cta-card .desc { font-size: 8.5pt; color: var(--text); flex: 1; }
+    .cta-card .url {
+      color: var(--primary);
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 8.5pt;
+      border-top: 1px dashed var(--border-dim);
+      padding-top: 3pt;
+      margin-top: 2pt;
+    }
+
+    .footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 7.5pt;
+      font-family: 'Share Tech Mono', monospace;
+      letter-spacing: 2px;
+    }
+    .footer .pb { color: var(--primary); }
+    .footer .sep { color: var(--secondary); margin: 0 6pt; }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <span class="brand">PICKBITS.AI <span class="slash">//</span> FIELD_GUIDE_01</span>
+    <span class="tagline">&gt; build_things_that_think()<span class="cursor">_</span></span>
+  </div>
+
+  <h1>The <span class="accent">Context</span> Stack</h1>
+  <div class="subtitle">// Level 1 of 7 · Stop re-explaining yourself to AI every Monday.</div>
+
+  <div class="intro">
+    <strong>The problem:</strong> You open Claude. You paste the project brief again. You explain where you left off again. Fifteen minutes in, you're finally ready to work. Longer prompts are a treadmill. <span class="fix">The fix is structure:</span> <strong>5 layers, 60-second load, 10-minute weekly reset.</strong>
+  </div>
+
+  <div class="section-label">// THE_STACK</div>
+
+  <div class="layers">
+    <div class="layer">
+      <div class="layer-num">01</div>
+      <div class="layer-title">
+        <div class="layer-name">Identity</div>
+        <div class="layer-kind">static</div>
+      </div>
+      <div class="layer-desc">Who you are, your role, your non-negotiables. Things that don't change week-to-week.</div>
+      <div class="layer-file">identity.md</div>
+    </div>
+    <div class="layer">
+      <div class="layer-num">02</div>
+      <div class="layer-title">
+        <div class="layer-name">Projects</div>
+        <div class="layer-kind">semi-static</div>
+      </div>
+      <div class="layer-desc">One brief per active project. Goals, stakeholders, stack, decisions. Updated weekly.</div>
+      <div class="layer-file">project-*.md</div>
+    </div>
+    <div class="layer">
+      <div class="layer-num">03</div>
+      <div class="layer-title">
+        <div class="layer-name">State</div>
+        <div class="layer-kind">dynamic · daily</div>
+      </div>
+      <div class="layer-desc">What you touched today. What's blocked. What's next. Your working memory.</div>
+      <div class="layer-file">state.md</div>
+    </div>
+    <div class="layer">
+      <div class="layer-num">04</div>
+      <div class="layer-title">
+        <div class="layer-name">Artifacts</div>
+        <div class="layer-kind">referenced</div>
+      </div>
+      <div class="layer-desc">Code, docs, past decisions — linked, not copy-pasted. The moment you paste, it's stale.</div>
+      <div class="layer-file">link, don't copy</div>
+    </div>
+    <div class="layer">
+      <div class="layer-num">05</div>
+      <div class="layer-title">
+        <div class="layer-name">Patterns</div>
+        <div class="layer-kind">reusable</div>
+      </div>
+      <div class="layer-desc">Prompt templates, rubrics, rules that worked. Saved, not re-invented.</div>
+      <div class="layer-file">patterns/</div>
+    </div>
+  </div>
+
+  <div class="section-label">// THE_DRILLS</div>
+
+  <div class="drills">
+    <div class="drill">
+      <div class="drill-head">
+        <h3>Daily Load</h3>
+        <span class="time">~ 60 sec</span>
+      </div>
+      <ol>
+        <li>Open your AI tool.</li>
+        <li>Reference <span class="mono">identity.md</span> + the relevant <span class="mono">project-*.md</span> + <span class="mono">state.md</span>.</li>
+        <li>Ask: <em>"Load these. Then tell me where I left off."</em></li>
+      </ol>
+    </div>
+    <div class="drill">
+      <div class="drill-head">
+        <h3>Monday Reset</h3>
+        <span class="time">~ 10 min</span>
+      </div>
+      <ol>
+        <li>Update each project file with last week's decisions.</li>
+        <li>Archive last week's <span class="mono">state.md</span>. Start a fresh one.</li>
+        <li>Prune <span class="mono">patterns/</span> — delete anything unused in 30 days.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="math">
+    <span class="tag">// THE_MATH</span>
+    <span>Before: <strong>15 min</strong> × 5 sessions = <strong>75 min/wk</strong> on the treadmill. After: <strong>60 sec</strong> × 5 + 10 min reset = <strong>15 min/wk</strong>. Recovered: <span class="win">~1 hr/wk per person</span> → <span class="win">10 hrs/wk across a team of 10</span>.</span>
+  </div>
+
+  <div class="cta">
+    <div class="cta-card">
+      <span class="label">// FREE</span>
+      <div class="what">Skill + Series</div>
+      <div class="desc">The builder skill, templates, and upcoming MCP connectors — open source.</div>
+      <div class="url">&gt; github.com/pickbitsai/context-stack</div>
+    </div>
+    <div class="cta-card">
+      <span class="label">// 1:1</span>
+      <div class="what">AI Coaching</div>
+      <div class="desc">We build your stack live against your real projects.</div>
+      <div class="url">&gt; pickbits.ai/coaching</div>
+    </div>
+    <div class="cta-card">
+      <span class="label">// TEAM</span>
+      <div class="what">Enterprise Training</div>
+      <div class="desc">Team Context Stacks — Jira, GitHub, and docs wired in two weeks.</div>
+      <div class="url">&gt; pickbits.ai/consulting</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    © 2026 <span class="pb">PICKBITS.AI</span><span class="sep">//</span>BY MARK PICKERING<span class="sep">//</span>LEVEL 1 OF 7<span class="sep">//</span>V1.0
+  </div>
+
+</body>
+</html>
