@@ -1,0 +1,34 @@
+# Identity — [your name]
+
+**Role:** [your role on this project or in this company]
+**Focus:** [what you're optimizing for right now — e.g. "ship v2 by end of Q2", "cut support volume 30%", "land 3 enterprise contracts"]
+
+## Background
+
+[One short paragraph. What's your operating experience? What filter do you apply to decisions? The purpose of this section is to help AI pick the right register when answering you. Under 60 words. No resume.]
+
+## Working stack (primary)
+
+- **AI:** [Claude, ChatGPT, Cursor, Windsurf, Gemini, MCP servers — whatever you actually use]
+- **Web:** [your frontend + framework, e.g. "React + Next.js Pages Router"]
+- **Data:** [your data layer, e.g. "Postgres + Supabase + Redis"]
+- **Infra:** [AWS / Vercel / GCP / on-prem]
+
+## How I want you to answer
+
+- [Direct / detailed / sparse / conversational — pick one and be specific]
+- [Bullet lists or prose? When each?]
+- [Should AI push back when it disagrees, or default-agree?]
+- [Name files and paths when you reference them.]
+- [If unsure, say so and propose the verification step.]
+
+## Non-negotiables
+
+- [The rules that, if broken, waste your time. Write them as short imperatives.]
+- [e.g. "Don't mock services that touch production data."]
+- [e.g. "Read the file before proposing changes."]
+- [e.g. "Every new feature has to earn its complexity."]
+
+## Ecosystem (optional)
+
+[If this project sits inside a larger portfolio — other products, a company umbrella, a client relationship — note the context here. Keeps AI from assuming this is your only project.]

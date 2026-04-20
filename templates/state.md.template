@@ -1,0 +1,37 @@
+# State — week of [YYYY-MM-DD]
+
+## This week
+
+### [Monday (YYYY-MM-DD)] — [one-line theme of the day]
+
+- [what you shipped, touched, or decided]
+- [what you drafted, built, or reviewed]
+- [include decisions made, not just tasks done]
+
+### [Tuesday, etc. — add as the week progresses]
+
+## Blocked
+
+- **[short name of the blocker]** — [what's blocking, what would unblock it, who or what you're waiting on]
+
+## Next (priority order)
+
+1. [most important next move — specific enough that you'd know it's done]
+2. [next]
+3. [next]
+
+## Open threads (not blocking, not scheduled)
+
+- [things on your mind that aren't active work yet — decisions pending, options being considered, ideas worth returning to]
+
+## Decisions made this week
+
+- [decisions worth remembering past Monday — the kind that would cost time to re-litigate]
+
+## Signals (optional)
+
+- [external signals — vendor releases, market moves, team news, policy changes — that affect this project]
+
+## People (optional)
+
+- [team dependencies, stakeholder status, who's waiting on you, who you're waiting on]

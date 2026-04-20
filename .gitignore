@@ -1,0 +1,28 @@
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# Env / secrets
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+credentials.*
+
+# Build / runtime
+node_modules/
+dist/
+build/
+*.log
+
+# If you don't want your generated Context Stack committed, uncomment:
+# context-stack/

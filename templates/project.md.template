@@ -1,0 +1,46 @@
+# Project — [project name]
+
+**Tagline:** [one sentence, the elevator line]
+**Positioning:** [who this is for, what alternative it replaces or extends]
+**Repo:** [filesystem path or URL]
+
+## Why it exists
+
+[2–3 sentences on the thesis. What's the non-obvious reason this project — and not something else — is worth your time? Skip the marketing; write the honest version.]
+
+## Tech stack
+
+- [one bullet per major technology or service]
+- [include versions only where they matter]
+- [leave out anything you don't actually use]
+
+## Status (as of [YYYY-MM-DD])
+
+- **What's live:** [what's actually deployed and working]
+- **What's in progress:** [what's partially done, with honest completion estimate]
+- **Active branch:** [git branch you're working on]
+
+## Key architectural decisions
+
+[Decisions that recur in every AI conversation about this project. Make them explicit here so AI stops re-deriving them each session.]
+
+- [e.g. "API routes manually create DB clients — middleware doesn't cooperate."]
+- [e.g. "All tokens encrypted before DB storage."]
+
+## Phase plan
+
+1. [next phase, specific outcome]
+2. [phase after that]
+3. [next]
+
+## Kill list
+
+[Features you explicitly decided NOT to build, with one-line reasons. Stops AI from suggesting them on loop.]
+
+- [e.g. "Native mobile app — web app is enough; native is a 2027 conversation."]
+
+## Related artifacts (referenced, not copied)
+
+- `[path to authoritative doc]` — [what it is]
+- `[path to schema file]` — [what it is]
+- `[URL to external resource]` — [what it is]
